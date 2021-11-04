@@ -20,5 +20,18 @@ namespace ASPdotNet_nov_2021.Controllers
         {
             return View(_repo.GetAllVendors());
         }
+
+        [HttpGet]
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(VendorDto input)
+        {
+            _repo.CreateVendor(input);
+            return RedirectToAction("Index");
+        }
     }
 }

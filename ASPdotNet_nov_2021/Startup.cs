@@ -54,7 +54,7 @@ namespace ASPdotNet_nov_2021
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "{controller=Vendor}/{action=Index}/{id?}");
             });
         }
     }

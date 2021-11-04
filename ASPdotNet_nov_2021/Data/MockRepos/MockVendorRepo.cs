@@ -26,7 +26,9 @@ namespace ASPdotNet_nov_2021.Data.MockRepos
 
         public void CreateVendor(VendorDto value)
         {
-            throw new NotImplementedException();
+            int newId = _vendors.Max(v => v.V_code) + 1;
+            value.V_code = newId;
+            _vendors.Add(value);
         }
 
         public void DeleteVendor(int id)
