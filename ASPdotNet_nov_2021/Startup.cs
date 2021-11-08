@@ -1,8 +1,10 @@
+using ASPdotNet_nov_2021.Data;
 using ASPdotNet_nov_2021.Data.Interfaces;
 using ASPdotNet_nov_2021.Data.MockRepos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -27,7 +29,13 @@ namespace ASPdotNet_nov_2021
         {
             services.AddControllersWithViews();
 
+            services.AddDbContext<AppDbContext>( op => {
+                var cs = Configuration.GetConnectionString("Default");
+                op.UseSqlServer(cs);
+            });
+
             services.AddScoped<IVendorRepo, MockVendorRepo>();
+            services.AddScoped<IProductRepo, MockProductRepo>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
