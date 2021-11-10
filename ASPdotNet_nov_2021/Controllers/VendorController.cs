@@ -11,10 +11,12 @@ namespace ASPdotNet_nov_2021.Controllers
     public class VendorController : Controller
     {
         private readonly IVendorRepo _repo;
+        private readonly IProductRepo _prodRepo;
 
-        public VendorController(IVendorRepo repo)
+        public VendorController(IVendorRepo repo, IProductRepo prodRepo)
         {
             _repo = repo;
+            _prodRepo = prodRepo;
         }
         public IActionResult Index()
         {
@@ -39,5 +41,18 @@ namespace ASPdotNet_nov_2021.Controllers
             return View(_repo.GetVendor(id));
         }
 
+        public IEnumerable<string> GetProductsByVendorId(int id)
+        {
+            var result = _prodRepo.GetAll()
+                .Where(p => p.V_code == id)
+                .Select(p => p.P_descript + "\t" + p.P_Price + "<br>");
+
+            if (result == null || result.Count() == 0)
+            {
+                return new List<string> { "No Product found " };
+            }
+
+            return result;
+        }
     }
 }
