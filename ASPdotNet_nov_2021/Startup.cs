@@ -1,6 +1,7 @@
 using ASPdotNet_nov_2021.Data;
 using ASPdotNet_nov_2021.Data.Interfaces;
 using ASPdotNet_nov_2021.Data.MockRepos;
+using ASPdotNet_nov_2021.Data.SqlRepos;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -34,7 +35,7 @@ namespace ASPdotNet_nov_2021
                 op.UseSqlServer(cs);
             });
 
-            services.AddScoped<IVendorRepo, MockVendorRepo>();
+            services.AddScoped<IVendorRepo, SqlVendorRepo>();
             services.AddScoped<IProductRepo, MockProductRepo>();
         }
 

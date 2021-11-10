@@ -33,5 +33,11 @@ namespace ASPdotNet_nov_2021.Controllers
             _repo.CreateVendor(input);
             return RedirectToAction("Index");
         }
+        [HttpGet]
+        public IActionResult Update(int id)
+        {
+            return View(_repo.GetVendor(id));
+        }
+
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace ASPdotNet_nov_2021.Data.Interfaces
 {
-    interface IProductRepo
+    public interface IProductRepo
     {
         IEnumerable<ProductDto> GetAll();
         ProductDto GetById(string id);
