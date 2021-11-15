@@ -41,6 +41,12 @@ namespace ASPdotNet_nov_2021.Controllers
             return View(_repo.GetVendor(id));
         }
 
+        [HttpPost]
+        public IActionResult Update(VendorDto input)
+        {
+            _repo.UpdateVendor(input);
+            return RedirectToAction("Index");
+        }
         public IEnumerable<string> GetProductsByVendorId(int id)
         {
             var result = _prodRepo.GetAll()
