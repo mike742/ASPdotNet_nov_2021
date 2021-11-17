@@ -17,5 +17,15 @@ namespace WebApiDemo_2.Data
                Price = input.Price
             };
         }
+
+        public OrderDto Map(Order input)
+        {
+            return new OrderDto
+            {
+                Id = input.Id,
+                Name = input.Name,
+                Date = input.Date
+            };
+        }
     }
 }
